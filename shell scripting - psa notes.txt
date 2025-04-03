@@ -395,4 +395,49 @@ echo $TRAINER
 devops
 pankaj
 
+##########################################
+Operators in Linux Shell Scripting
+##########################################
+
+-> Operators are symbols that perform operations on variables or values. For example:
+
+Example: 
+
+echo $((10 + 20))  # Output: 30
+
+
+1) Arithmetic Operators in Shell
+Operator	   Description	                Example (a=10, b=5)
++	              Addition	                 echo $((a + b)) → 15
+-	             Subtraction	               echo $((a - b)) → 5
+*            	Multiplication	             echo $((a * b)) → 50
+/	              Division	                 echo $((a / b)) → 2
+%	               Modulus (Remainder)	     echo $((a % b)) → 0
+
+2) Syntax for Arithmetic Operations
+Basic Syntax:
+
+$((FNUM OPERATOR SNUM))
+
+📌 Example:
+
+FNUM=10
+SNUM=5
+
+echo $((FNUM + SNUM))  # Addition → 15
+echo $((FNUM - SNUM))  # Subtraction → 5
+echo $((FNUM * SNUM))  # Multiplication → 50
+echo $((FNUM / SNUM))  # Division → 2
+echo $((FNUM % SNUM))  # Modulus → 0
+
+
+3) Handling Decimal Values (Floating-Point Arithmetic)
+
+The default $(()) does not support floating-point calculations. To handle decimals, use bc:
+
+echo "10.5 + 2.3" | bc    # Output: 12.8
+echo "10 / 3" | bc -l     # Output: 3.333333333
+
+📌 bc -l enables floating-point calculations.
+
 
