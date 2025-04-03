@@ -299,6 +299,100 @@ Step 3: Run the Parent Script
 chmod +x parent.sh child.sh  # Give execution permission
 ./parent.sh
 
+######################################
+Setting Variables Permanently in Linux
+######################################
 
+To make environment variables persistent, we store them in the .bashrc file. This ensures the variables are available even after restarting the terminal or system.
+
+Steps to Set Permanent Variables
+
+1) Locate the .bashrc File
+
+The .bashrc file is a hidden file located in the user's home directory.
+To check if the file exists, run:
+
+ls -la
+
+To view its content:
+
+cat ~/.bashrc
+
+2) Open the .bashrc File for Editing
+Use the vi or nano editor to modify the file:
+
+vi ~/.bashrc
+(or use nano ~/.bashrc if you prefer nano editor.)
+
+3) Add Variables at the End of the File
+Scroll to the bottom of the file and add the following lines:
+
+
+export COURSE=devops
+export TRAINER=pankaj
+
+✅ Changes made here will persist across terminal sessions.
+
+4) Apply the Changes
+After editing, save and exit (ESC → :wq in vi, or CTRL + X → Y → Enter in nano).
+
+Then, apply the changes immediately by running:
+
+source ~/.bashrc
+
+5) Access the Variables
+Now, check if the variables are set:
+
+echo $COURSE
+echo $TRAINER
+
+Expected Output:
+
+devops
+pankaj
+
+Key Points
+-> Every user has their own .bashrc file in their home directory (/home/username/.bashrc).
+-> Changes in .bashrc apply only to that user.
+
+################################################
+How to Set Variables for All Users in Linux?
+################################################
+
+By default, variables set in .bashrc are user-specific. However, to make variables available system-wide (for all users), you need to define them in global configuration files such as /etc/profile or /etc/environment.
+
+1) Setting Variables in /etc/profile
+/etc/profile is a global shell configuration file executed for all users when they log in.
+
+Adding variables here ensures they are available system-wide for all users.
+
+Steps to Set System-Wide Variables in /etc/profile
+Step 1: Open /etc/profile with a text editor
+
+sudo vi /etc/profile
+(Use nano /etc/profile if you prefer nano.)
+
+Step 2: Add the Variables at the End of the File
+
+export COURSE=devops
+export TRAINER=pankaj
+
+
+Step 3: Apply Changes Immediately
+Run:
+
+
+source /etc/profile
+This ensures the changes take effect without needing a reboot.
+
+Step 4: Verify the Variables
+
+echo $COURSE
+echo $TRAINER
+
+✅ Output:
+
+devops
+pankaj
 
 
