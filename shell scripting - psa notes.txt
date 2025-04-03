@@ -279,80 +279,25 @@ echo $age     # Output: 25
 
 🚨 Important: Do not add spaces before or after = while assigning a variable (e.g., name = pankaj ❌ will cause an error).
 
-Working with Environment Variables in the Terminal
+Why to use export keyword to create variable in shell script:
+-> To access a variable from one script file into another we should use export keyword.
 
-1) Create a Variable
-Use the export command to create a temporary environment variable:
+Example: Demonstrating export
+Step 1: Create Parent Script (parent.sh)
 
-export course=devops
-export makes the variable accessible to child processes.
+#!/bin/bash
+export MESSAGE="Hello from Parent"
+./child.sh
 
-2) Retrieve the Variable Value
+Step 2: Create Child Script (child.sh)
 
-echo $course
-Output:
-devops
+#!/bin/bash
+echo "Child received: $MESSAGE"
 
-3) Remove (Unset) a Variable
-To delete an environment variable, use the unset command:
+Step 3: Run the Parent Script
 
-unset course
-This removes course from the current session.
-
-If you try echo $course, you’ll get no output because the variable no longer exists.
-
-Setting Variables Permanently in Linux
-To make environment variables persistent, we store them in the .bashrc file. This ensures the variables are available even after restarting the terminal or system.
-
-Steps to Set Permanent Variables
-
-1) Locate the .bashrc File
-
-The .bashrc file is a hidden file located in the user's home directory.
-To check if the file exists, run:
-
-ls -la
-
-To view its content:
-
-cat ~/.bashrc
-
-2) Open the .bashrc File for Editing
-Use the vi or nano editor to modify the file:
-
-vi ~/.bashrc
-(or use nano ~/.bashrc if you prefer nano editor.)
-
-3) Add Variables at the End of the File
-Scroll to the bottom of the file and add the following lines:
-
-
-export COURSE=devops
-export TRAINER=pankaj
-
-✅ Changes made here will persist across terminal sessions.
-
-4) Apply the Changes
-After editing, save and exit (ESC → :wq in vi, or CTRL + X → Y → Enter in nano).
-
-Then, apply the changes immediately by running:
-
-source ~/.bashrc
-
-5) Access the Variables
-Now, check if the variables are set:
-
-echo $COURSE
-echo $TRAINER
-
-Expected Output:
-
-devops
-pankaj
-
-Key Points
--> Every user has their own .bashrc file in their home directory (/home/username/.bashrc).
--> Changes in .bashrc apply only to that user.
+chmod +x parent.sh child.sh  # Give execution permission
+./parent.sh
 
 
 
