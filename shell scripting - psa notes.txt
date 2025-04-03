@@ -241,4 +241,119 @@ echo "Hello, $first_name $last_name! Welcome!"
 
 ------------------------------------------------------------
 
+Types of Variables in Linux
+In Linux, variables are classified into two main types:
+
+1) System Variables (Environment Variables)
+-> These are predefined by the system and available for all users and processes.
+-> They store essential system information such as current user, shell path, and executable directories.
+-> System variables are usually written in UPPERCASE.
+
+Examples of System Variables
+Run these commands in the terminal to check system variables:
+
+echo $SHELL    # Shows the current shell being used (e.g., /bin/bash)
+echo $USER     # Displays the current logged-in user
+echo $PATH     # Lists directories where system searches for executable files
+📌 To view all system variables, use:
+
+env
+
+2) User-Defined Variables
+-> These are custom variables created by users to store values for their scripts or tasks.
+-> They are not available globally unless exported.
+-> By convention, they are written in lowercase.
+
+Example of User-Defined Variables
+
+name=Pankaj
+id=101
+age=25
+gender=male
+
+To access these variables, use:
+
+echo $name    # Output: pankaj
+echo $id      # Output: 101
+echo $age     # Output: 25
+
+🚨 Important: Do not add spaces before or after = while assigning a variable (e.g., name = pankaj ❌ will cause an error).
+
+Working with Environment Variables in the Terminal
+
+1) Create a Variable
+Use the export command to create a temporary environment variable:
+
+export course=devops
+export makes the variable accessible to child processes.
+
+2) Retrieve the Variable Value
+
+echo $course
+Output:
+devops
+
+3) Remove (Unset) a Variable
+To delete an environment variable, use the unset command:
+
+unset course
+This removes course from the current session.
+
+If you try echo $course, you’ll get no output because the variable no longer exists.
+
+Setting Variables Permanently in Linux
+To make environment variables persistent, we store them in the .bashrc file. This ensures the variables are available even after restarting the terminal or system.
+
+Steps to Set Permanent Variables
+
+1) Locate the .bashrc File
+
+The .bashrc file is a hidden file located in the user's home directory.
+To check if the file exists, run:
+
+ls -la
+
+To view its content:
+
+cat ~/.bashrc
+
+2) Open the .bashrc File for Editing
+Use the vi or nano editor to modify the file:
+
+vi ~/.bashrc
+(or use nano ~/.bashrc if you prefer nano editor.)
+
+3) Add Variables at the End of the File
+Scroll to the bottom of the file and add the following lines:
+
+
+export COURSE=devops
+export TRAINER=pankaj
+
+✅ Changes made here will persist across terminal sessions.
+
+4) Apply the Changes
+After editing, save and exit (ESC → :wq in vi, or CTRL + X → Y → Enter in nano).
+
+Then, apply the changes immediately by running:
+
+source ~/.bashrc
+
+5) Access the Variables
+Now, check if the variables are set:
+
+echo $COURSE
+echo $TRAINER
+
+Expected Output:
+
+devops
+pankaj
+
+Key Points
+-> Every user has their own .bashrc file in their home directory (/home/username/.bashrc).
+-> Changes in .bashrc apply only to that user.
+
+
+
 
