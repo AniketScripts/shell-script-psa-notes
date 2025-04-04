@@ -414,10 +414,9 @@ Operator	   Description	                Example (a=10, b=5)
 /	              Division	                 echo $((a / b)) → 2
 %	               Modulus (Remainder)	     echo $((a % b)) → 0
 
-2) Syntax for Arithmetic Operations
-Basic Syntax:
+How It Works
+$(( ... )): This syntax tells Bash to evaluate the mathematical expression inside the parentheses.
 
-$((FNUM OPERATOR SNUM))
 
 📌 Example:
 
