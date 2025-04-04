@@ -451,5 +451,63 @@ Operator	    Description	                    Example
 -ge	            Greater than or equal to	    [ 10 -ge 10 ] → true
 -le	            Less than or equal to	        [ 4 -le 7 ] → true
 
+####################################################
+1. Space Around Square Brackets [ condition ]
+In Bash, when using the if condition, there must be spaces around the square brackets [ ].
+-------------------------------------
+❌ Incorrect:
+if [$NUM-gt10 ]; then
+----------------------------------------
+--------------------------------------
+✅ Correct:
+if [ "$NUM" -gt 10 ]; then
+--------------------------------------
+Why?
+-> Bash treats [ as a command.
+-> The condition inside must be separated by spaces; otherwise, Bash will treat [$NUM-gt10] as a single argument and throw an error.
+
+####################################################
+2. Space Between the if, elif, and then Keywords
+####################################################
+
+-> The then keyword must be on the same line as if or a newline.
+-> If it is on the same line, it must be separated by a semicolon (;).
+
+--------------------------------------------------
+✅ Correct:
+if [ "$NUM" -gt 10 ]; then
+OR
+if [ "$NUM" -gt 10 ]
+then
+-----------------------------------------------------
+❌ Incorrect:
+if [ "$NUM" -gt 10 ]then
+-----------------------------------------------------
+##################################################
+3. Space Around Operators (-gt, -eq, -lt, etc.)
+###################################################
+Comparison operators like -gt, -eq, -lt, etc., should have spaces before and after them.
+----------------------------------------------------------
+✅ Correct:
+if [ "$NUM" -gt 10 ]; then
+-----------------------------------------------------------
+❌ Incorrect:
+if [ "$NUM"-gt10 ]; then
+------------------------------------------------------------
+
+###################################################
+String Comparison Operators (Used with [[ ... ]])
+###################################################
+
+When comparing strings, use the following operators:
+
+Operator	      Meaning	                      Example
+==	            Equal to	              [[ "$str1" == "$str2" ]]
+!=	            Not equal to	          [[ "$str1" != "$str2" ]]
+>	          Greater (alphabetically)	  [[ "$str1" > "$str2" ]]
+<	            Less (alphabetically)	    [[ "$str1" < "$str2" ]]
 
 
+🚨 Important Notes:
+a.  > and < work for string comparison inside [[ ... ]] but not in [ ... ].
+b. Always use quotes around string variables to prevent errors
