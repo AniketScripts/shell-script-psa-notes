@@ -432,7 +432,8 @@ echo $((FNUM % SNUM))  # Modulus → 0
 
 3) Handling Decimal Values (Floating-Point Arithmetic)
 
-The default $(()) does not support floating-point calculations. To handle decimals, use bc:
+-> The default $(()) does not support floating-point calculations.
+-> To handle decimals, use bc (Basic Calculator) command is used for floating-point arithmetic
 
 echo "10.5 + 2.3" | bc    # Output: 12.8
 echo "10 / 3" | bc -l     # Output: 3.333333333
