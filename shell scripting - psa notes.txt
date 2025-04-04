@@ -440,4 +440,16 @@ echo "10 / 3" | bc -l     # Output: 3.333333333
 
 📌 bc -l enables floating-point calculations.
 
+#####################################################
+Complete List of Relational Operators in Bash
+#####################################################
+Operator	    Description	                    Example
+-eq	            Equal to	                    [ 5 -eq 5 ] → true
+-ne	            Not equal to	                [ 5 -ne 3 ] → true
+-gt	            Greater than	                [ 10 -gt 5 ] → true
+-lt	            Less than	                    [ 3 -lt 8 ] → true
+-ge	            Greater than or equal to	    [ 10 -ge 10 ] → true
+-le	            Less than or equal to	        [ 4 -le 7 ] → true
+
+
 
