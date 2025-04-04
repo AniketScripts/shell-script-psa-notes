@@ -514,3 +514,42 @@ Operator	      Meaning	                      Example
 🚨 Important Notes:
 a.  > and < work for string comparison inside [[ ... ]] but not in [ ... ].
 b. Always use quotes around string variables to prevent errors
+
+Example 1:
+------------
+echo "Enter a number:"
+read num
+
+if [ "$num" -gt 0 ]; then
+    echo "The number is positive."
+fi
+
+Example 2:
+------------
+#!/bin/bash
+
+echo "Enter a number:"
+read num
+
+if [ "$num" -gt 0 ]; then
+    echo "Positive number."
+else
+    echo "Zero or negative number."
+fi
+
+Example 3:
+------------
+#!/bin/bash
+
+echo "Enter a number:"
+read num
+
+if [ "$num" -gt 0 ]; then
+    echo "Positive"
+elif [ "$num" -lt 0 ]; then
+    echo "Negative"
+else
+    echo "Zero"
+fi
+
+
