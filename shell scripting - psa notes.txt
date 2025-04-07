@@ -552,4 +552,179 @@ else
     echo "Zero"
 fi
 
+###################################
+🔁 Looping in Shell Scripting
+###################################
+
+Loops are used to repeat a block of code multiple times. There are mainly two types:
+
+a. Range-Based Loop – for loop
+
+b. Condition-Based Loop – while loop
+
+Syntax:
+
+for(( initialization; condition; increment/decrement ))
+do
+  # statements
+done
+
+✅ Explanation:
+
+for (( ... )) – this is the arithmetic format of the for loop (like in C/C++).
+
+initialization – usually a variable like i=1
+
+condition – a check like i<=10
+
+increment – update variable like i++
+
+NO SPACES around the (( ... ))
+SPACES are needed after do and before done
+
+Note:
+---------
+((...))	Performs arithmetic operations only (no output)	((i++))
+$((...))	Performs arithmetic and returns the result (used in expressions)	echo $((2 + 3))
+
+NOte:
+--------------------------------------------
+✅ In (( ... )) — NO need for $ with variables
+bash
+Copy
+Edit
+i=5
+if (( i < 10 )); then
+  echo "Yes, i is less than 10"
+fi
+(( ... )) is for arithmetic.
+
+Inside, you can use variables directly without $.
+
+It's like writing math in C or Java.
+
+✔️ Both of these are OK:
+
+-> (( i < 10 )) #valid
+-> (( $i < 10 ))   # also valid but $ is optional
+-> ❗ In [ ... ] — You MUST use $ with variables
+------------------------------------------------------
+i=5
+if [ $i -lt 10 ]; then
+  echo "Yes, i is less than 10"
+fi
+------------------------------------------------------
+-> [ ... ] treats everything as strings/commands.
+-> So, you need to dereference the variable using $.
+--------------------------------------------------------------------
+❌ This will NOT work:
+if [ i -lt 10 ]; then   # i is just a string here, not the variable!
+----------------------------------------------------------------------
+✔️ Correct way:
+if [ $i -lt 10 ]; then
+----------------------------------------------------------------------
+
+
+Example 1:
+-----------
+
+#! /bin/bash
+
+for(( i=1; i<=20; i++ ))
+do
+  if(( i%2 != 0 )); then
+    echo $i
+  fi
+done
+
+Example 2:
+------------
+🔹 Example 2: Print Multiples of 5 from 1 to 50
+
+#! /bin/bash
+
+for(( i=1; i<=50; i++ ))
+do
+  if(( i%5 == 0 )); then
+    echo $i
+  fi
+done
+
+Syntax
+--------------
+
+while [ condition ]
+do
+  # statements
+done
+
+NOte:
+--------
+Example using ((...)):
+
+i=1
+while (( i <= 5 ))
+do
+  echo "Number: $i"
+  ((i++))
+done
+
+✔ This is equivalent to:
+
+i=1
+while [ $i -le 5 ]
+do
+  echo "Number: $i"
+  ((i++))
+done
+
+-------------------------------------------
+
+
+Example 1:
+-----------
+Print Even Numbers from 1 to 20 using While Loop
+
+#! /bin/bash
+
+i=1
+while [ $i -le 20 ]
+do
+  if (( i%2 == 0 )); then
+    echo $i
+  fi
+  ((i++))
+done
+
+Example 2:
+-----------
+Print Table of 2 using While Loop
+
+#! /bin/bash
+
+i=1
+while [ $i -le 10 ]
+do
+  echo $((2 * i))
+  ((i++))
+done
+
+Example 3:
+--------------
+Sum of Numbers from 1 to 10 using While Loop
+
+#! /bin/bash
+
+i=1
+sum=0
+while [ $i -le 10 ]
+do
+  sum=$((sum + i))
+  ((i++))
+done
+
+echo "Sum is: $sum"
+
+
+
 
