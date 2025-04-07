@@ -587,6 +587,11 @@ Note:
 ((...))	Performs arithmetic operations only (no output)	((i++))
 $((...))	Performs arithmetic and returns the result (used in expressions)	echo $((2 + 3))
 
+Note:
+---------------------------------------
+🛠️ The problem:
+[ ... ] is used for conditions, like in if or while, not in for loops.
+
 NOte:
 --------------------------------------------
 ✅ In (( ... )) — NO need for $ with variables
