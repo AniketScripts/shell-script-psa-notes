@@ -498,6 +498,32 @@ if [ "$NUM" -gt 10 ]; then
 if [ "$NUM"-gt10 ]; then
 ------------------------------------------------------------
 
+🧪 Example 1: Using (( ... )) — Arithmetic Style (Modern & Clean)
+x=2
+if (( x > 1 )); then
+    echo "Using (( ... )): x is greater than 1 → $x"
+fi
+
+✅ How it works:
+-> (( ... )) is bash arithmetic context
+-> x > 1 is treated like a math expression (like in C or Java)
+-> You don’t need $ inside (( ... )), but it works either way
+
+🧪 Example 2: Using [ ... ] — Classic Style (More Compatible)
+
+x=2
+if [ $x -gt 1 ]; then
+    echo "Using [ ... ]: x is greater than 1 → $x"
+fi
+
+✅ How it works:
+-> [ ... ] is the test command
+-> -gt means “greater than” for numbers
+-> $x is required to access the value
+-> Spaces are mandatory before and after [
+
+
+
 ###################################################
 String Comparison Operators (Used with [[ ... ]])
 ###################################################
