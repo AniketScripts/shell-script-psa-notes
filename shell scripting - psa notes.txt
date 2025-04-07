@@ -522,6 +522,8 @@ fi
 -> $x is required to access the value
 -> Spaces are mandatory before and after [
 
+Note: ❌ You CANNOT use -ge (or -gt, -lt, etc.) inside (( ... ))
+
 
 
 ###################################################
