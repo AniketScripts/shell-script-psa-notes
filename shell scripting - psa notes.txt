@@ -758,6 +758,172 @@ done
 
 echo "Sum is: $sum"
 
+################################
+Function
+###############################
+
+What is a Function in Shell Script?
+--------------------------------------
+A function is a block of code that performs a specific task. Once defined, you can call it multiple times whenever needed
+
+syntax:
+
+function function_name() {
+    # your commands
+}
+
+or
+
+function_name() {
+    # your commands
+}
+
+method calling syntax:
+----------------------------
+function_name
+
+Example 1:
+-----------
+
+#! /bin/bash
+
+welcome() {
+    echo "Welcome"
+}
+
+# Function call
+welcome
+
+Example 2:
+-----------
+
+#! /bin/bash
+
+greet_user() {
+    echo "Hello, $1!"
+    echo "You are learning $2."
+}
+
+# Call function with arguments
+greet_user "John" "Shell Scripting"
+
+Example 3:
+-------------
+
+#! /bin/bash
+
+sum() {
+    result=$(($1 + $2))
+    echo "Sum is: $result"
+}
+
+sum 10 25
+
+Example 4:
+----------
+
+#! /bin/bash
+
+sum() {
+    echo "Sum: $(($1 + $2))"
+}
+
+subtract() {
+    echo "Difference: $(($1 - $2))"
+}
+
+# Use cmd args for calculation
+sum $1 $2
+subtract $1 $2
+
+✅ Benefits of Using Functions
+✔ Code reuse
+✔ Easier to test/debug
+✔ Logical separation of tasks
+✔ Can take parameters (just like mini scripts)
+
+#############################################
+✅ What is Scheduling in Linux?
+#############################################
+
+-> Scheduling means setting up a task to run automatically at a specific time — without needing manual execution.
+
+-> Instead of you running a script, the system runs it for you — automatically, at a fixed time or repeating interval.
+
+#############################
+🧰 Why Use Scheduling?
+#############################
+In real-time environments (like DevOps, system admin, cloud, etc.), many tasks need to be automated:
+
+🗑️ Deleting temp or log files regularly
+
+🗂️ Backing up data daily or weekly
+
+🖥️ Monitoring system health
+
+📧 Sending reports via email
+
+🛠️ Running maintenance scripts
+
+#######################################
+🕒 How Do We Schedule in Linux?
+########################################
+
+-> We use a tool called cron (short for chronograph) which allows you to schedule tasks using cron jobs.
+
+###########################
+📄 What is a Cron Job?
+###########################
+
+-> A cron job is a command or script scheduled to run at a particular time using the cron service.
+
+-> You define cron jobs in a file called a crontab (short for “cron table”).
+
+📝 Example Requirement:
+You want to run the script system-health-check.sh every day at 9:00 AM.
+
+✅ Step-by-Step:
+Open the crontab editor:
+crontab -e
+
+Add this line:
+0 9 * * * /path/to/system-health-check.sh
+
+📅 Cron Time Format:
+
+* * * * *  <command>
+│ │ │ │ │
+│ │ │ │ └── Day of week (0 - 6) [Sun - Sat]
+│ │ │ └──── Month (1 - 12)
+│ │ └────── Day of month (1 - 31)
+│ └──────── Hour (0 - 23)
+└────────── Minute (0 - 59)
+So in 0 9 * * *, it means:
+
+0 minute
+
+9 hour
+
+Every day, month, and weekday
+
+Example 1:
+---------
+▶️ 2. Every 5 Minutes
+*/5 * * * *
+
+▶️ 3. Every Day at 9:00 AM
+0 9 * * * 
+
+▶️ 4. Every Day at 6:30 PM
+30 18 * * * 
+
+▶️ 5. Every Monday at 8:00 AM
+0 8 * * 1
+
+▶️ 6. On 1st of Every Month at Midnight
+
+▶️ 10. Every 2 Hours
+0 */2 * * *
 
 
 
