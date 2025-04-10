@@ -879,6 +879,15 @@ In real-time environments (like DevOps, system admin, cloud, etc.), many tasks n
 
 -> You define cron jobs in a file called a crontab (short for “cron table”).
 
+###############################
+Install CRON in Amazonlinux
+##############################
+
+sudo yum install cronie
+sudo systemctl enable crond
+sudo systemctl start crond
+
+
 📝 Example Requirement:
 You want to run the script system-health-check.sh every day at 9:00 AM.
 
@@ -891,13 +900,15 @@ Add this line:
 
 📅 Cron Time Format:
 
-* * * * *  <command>
-│ │ │ │ │
-│ │ │ │ └── Day of week (0 - 6) [Sun - Sat]
-│ │ │ └──── Month (1 - 12)
-│ │ └────── Day of month (1 - 31)
-│ └──────── Hour (0 - 23)
-└────────── Minute (0 - 59)
+🌟 * * * * * = Every Minute
+Each asterisk * represents a unit of time, in this order:
+
+Position	        Field	                    Meaning	Example
+1️⃣	Minute	        0–59	                    * = every minute
+2️⃣	Hour	        0–23 (24h clock)	        * = every hour
+3️⃣	Day of Month	1–31	                    * = every day
+4️⃣	Month	        1–12	                    * = every month
+5️⃣	Day of Week	    0–7 (0 or 7 = Sunday)	    * = every day
 So in 0 9 * * *, it means:
 
 0 minute
@@ -920,9 +931,8 @@ Example 1:
 ▶️ 5. Every Monday at 8:00 AM
 0 8 * * 1
 
-▶️ 6. On 1st of Every Month at Midnight
 
-▶️ 10. Every 2 Hours
+▶️ 6. Every 2 Hours
 0 */2 * * *
 
 
